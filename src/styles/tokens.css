@@ -1,0 +1,112 @@
+/* ==========================================================================
+   TOKENS: the only stylesheet allowed to hold colour literals.
+   ==========================================================================
+
+   PALETTE PROVENANCE (sampled, never invented)
+   --------------------------------------------
+   Pixel reads made with Pillow over every file in brand/ and reference/.
+   brand/LOGO SPUME PNG.png        RGBA colortype 6, 2000x2000, alpha 255 everywhere
+       modal pixel 1,158,764 of 1.33M sampled     -> rgb(37,136,252)  #2588fc  (field)
+       modal white of the mark                    -> rgb(252,253,253) #fcfdfd  (mark)
+   brand/LOGO SPUME PNG...png      RGBA colortype 6, 2000x2000, alpha histogram
+       [0]=3,458,790  [1-31]=159,458  [32-127]=7,108  [128-254]=374,641  [255]=3
+       every transparent pixel is pure black (0,0,0): resized PREMULTIPLIED.
+       opaque pixels: white only (#fcfcfc..#fdfdfd)
+   brand/LOGO SPUME JPG.jpg.jpeg   RGB, same field/mark as the PNG (#2888f8 bucket)
+   reference/SPUME 1..6, SAMPUL    RGB sky gradient. Dominant buckets sampled:
+       #0e8afe #128ffd #1791fe #209cfe #21a0fd #1e9dfe  (sky ramp), white #fcfdfd
+   Surfaces, borders, text tints and up/down hues are DERIVED from those samples
+   with color-mix / relative colour. No other hex literal exists in the project
+   (src/assets/favicon.svg carries #2588fc and #fcfdfd, its own sampled pixels).
+
+   REFERENCE STUDY RECORD (structure only, nothing of its content is reused)
+   ------------------------------------------------------------------------
+   Section order : header > hero (h1, sub, 2 pills, product frame, partner strip)
+                   > unified-balance centrepiece (orbit chips + count-up pill)
+                   > architecture (copy + 2 cards, dot-field canvas)
+                   > rewards (2x2 bordered grid, coming-soon pill)
+                   > buybacks band (CA box, 3 step cards, banner)
+                   > FAQ (0.7fr / 1.3fr, single-open accordion)
+                   > CTA row + footer bar
+   Containers    : max 1100 (sections) / 1280 (header, hero); gutters 20 / 32 (md)
+   Section pad   : 80 / 112 (md) vertical; hero top 96 / 112
+   Radii         : cards 12, inner panels 10, icon tiles 8, pills 999, chips 999
+   Type          : h1 33.6 / 60, lh 1.05, ls -0.02em, w400  (Instrument Sans)
+                   h2 30 / 36 / 48, ls -0.02em, w400
+                   body 16 / 18, white 55-60% ; labels mono 11 ls 0.22em upper
+   Buttons       : height 44, pill, px 28 primary (white bg) / 24 ghost (1px 15% border)
+   Motion        : boot-breathe 1500ms ease-in-out; fade-in 8px; slide-up 16px
+                   whileInView y16 -> 0, delay 80ms; orbit 800ms cubic-bezier(.22,1,.36,1),
+                   stagger 80ms; centre pill 700ms delay 350ms; faq 280ms
+                   count-up spring stiffness 48 damping 22; dot canvas step 0.018, grid 18
+   Hover         : link white 55% -> 100%; ghost border 15% -> 30%; accent -> hover tint
+   ========================================================================== */
+
+:root {
+  /* ---- sampled ---- */
+  --sample-field: #2588fc;
+  --sample-mark:  #fcfdfd;
+  --sample-sky-0: #0e8afe;
+  --sample-sky-1: #1791fe;
+  --sample-sky-2: #209cfe;
+  --sample-sky-3: #21a0fd;
+
+  /* ---- derived surfaces ---- */
+  --color-bg:        color-mix(in oklab, var(--sample-field) 11%, black);
+  --color-bg-deep:   color-mix(in oklab, var(--sample-field) 7%, black);
+  --color-surface:   color-mix(in oklab, var(--sample-field) 16%, black);
+  --color-surface-2: color-mix(in oklab, var(--sample-field) 21%, black);
+  --color-surface-3: color-mix(in oklab, var(--sample-field) 28%, black);
+  --color-border:       color-mix(in srgb, var(--sample-mark) 9%, transparent);
+  --color-border-hover: color-mix(in srgb, var(--sample-mark) 18%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--sample-mark) 30%, transparent);
+
+  --color-text:      var(--sample-mark);
+  --color-text-2:    color-mix(in srgb, var(--sample-mark) 72%, transparent);
+  --color-text-3:    color-mix(in srgb, var(--sample-mark) 52%, transparent);
+  --color-text-4:    color-mix(in srgb, var(--sample-mark) 34%, transparent);
+
+  --color-accent:        var(--sample-field);
+  --color-accent-hover:  var(--sample-sky-2);
+  --color-accent-muted:  color-mix(in srgb, var(--sample-field) 18%, transparent);
+  --color-accent-line:   color-mix(in srgb, var(--sample-field) 42%, transparent);
+  --color-accent-glow:   color-mix(in srgb, var(--sample-field) 30%, transparent);
+  --color-on-accent:     var(--sample-mark);
+  --color-ink:           color-mix(in oklab, var(--sample-field) 10%, black);
+
+  /* market direction: hues rotated from the field colour in oklch */
+  --color-up:        oklch(from var(--sample-field) 0.82 0.16 158);
+  --color-up-muted:  oklch(from var(--sample-field) 0.82 0.16 158 / 0.16);
+  --color-down:      oklch(from var(--sample-field) 0.72 0.18 18);
+  --color-down-muted: oklch(from var(--sample-field) 0.72 0.18 18 / 0.16);
+
+  --color-scrim: color-mix(in srgb, black 55%, transparent);
+
+  /* ---- radii (reference: 12 / 10 / 8 / 999) ---- */
+  --radius-card: 12px;
+  --radius-inner: 10px;
+  --radius-tile: 8px;
+  --radius-pill: 999px;
+
+  /* ---- layout ---- */
+  --max: 1100px;
+  --max-wide: 1280px;
+  --gutter: 20px;
+  --gutter-md: 32px;
+  --section-y: 80px;
+  --section-y-md: 112px;
+  --tap: 44px;
+
+  /* ---- type ---- */
+  --font-hero: "Instrument Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-pulse: cubic-bezier(0.4, 0, 0.6, 1);
+  --dur-fast: 160ms;
+  --dur-faq: 280ms;
+  --dur-fade: 600ms;
+  --dur-own-pulse: 2400ms;
+}

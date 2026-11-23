@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en" data-ca-state="{{CA_STATE}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spumetrade | A dollar-balance gateway to Solana markets</title>
+<meta name="description" content="Spumetrade keeps your buying power as one dollar figure and puts a live Solana market board in front of you. Watch what moves, then step in from a single stash.">
+<meta name="theme-color" content="{{BRAND_BLUE}}">
+<link rel="canonical" href="{{ORIGIN}}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spumetrade">
+<meta property="og:title" content="Spumetrade | A dollar-balance gateway to Solana markets">
+<meta property="og:description" content="One dollar figure, a live Solana board, and nothing to sign here.">
+<meta property="og:url" content="{{ORIGIN}}/">
+<meta property="og:image" content="{{ORIGIN}}/brand/spume-logo.png">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="2000">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spumetrade">
+<meta name="twitter:image" content="{{ORIGIN}}/brand/spume-logo.png">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/logo-tile-512.png">
+<link rel="preload" as="image" href="assets/logo-tile-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/main.css">
+<script>
+document.documentElement.classList.add('js');
+setTimeout(function () { if (!document.documentElement.classList.contains('ready')) document.documentElement.classList.add('no-motion-js'); }, 4000);
+</script>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<div class="topbar">
+  {{CA_SLOT}}
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Spumetrade home"><img src="assets/logo-tile-512.png" width="38" height="38" alt=""><span>Spumetrade</span></a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#market">Board</a><a href="#gateway">Gateway</a><a href="#stack">Stack</a><a href="#roadmap">Roadmap</a><a href="#token">Token</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="socials">{{SOCIALS}}</div>
+  </header>
+</div>
+<span class="sr" id="copy-live" aria-live="polite"></span>
+
+<main id="top">
+
+  <section class="hero" id="hero">
+    <div class="hero__mesh" aria-hidden="true">
+      <div class="hero__grid-lines"></div>
+      <div class="blob blob--a" data-depth="0.5"><i></i></div>
+      <div class="blob blob--b" data-depth="0.8"><i></i></div>
+      <div class="blob blob--c" data-depth="1.1"><i></i></div>
+      <div class="blob blob--d" data-depth="1.5"><i></i></div>
+    </div>
+    <div class="wrap wrap--wide">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="pill" data-status data-s="loading"><i class="dot"></i><span data-status-label>Syncing</span><span class="hide-sm" aria-hidden="true">&middot;</span><span class="hide-sm">{{CHAIN_LABEL}}</span><span aria-hidden="true">&middot;</span><span>Slot <b data-slot>&mdash;</b></span></span>
+          <h1>Hold dollars. <em>Reach every token</em> worth watching.</h1>
+          <p class="lede">Spumetrade is a front door to Solana markets. Park your buying power as a single dollar figure, read the live board, and step into whatever is moving.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#market">Open the board</a>
+            <a class="btn btn--ghost" href="#gateway">See the idea</a>
+          </div>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="art-layer" data-depth="0.4"><div class="ring ring--3"></div><div class="ring ring--1"></div><div class="ring ring--2"></div></div>
+          <div class="art-layer" data-depth="1"><img class="art-tile" src="assets/logo-tile-512.png" width="512" height="512" alt=""></div>
+          <div class="chip chip--a" data-depth="1.8"><small>Top mover</small><strong><span id="chip-sym">&mdash;</span><span id="chip-chg">&mdash;</span></strong></div>
+          <div class="chip chip--b" data-depth="1.4"><small>Rows live</small><strong><span id="chip-count">&mdash;</span></strong></div>
+        </div>
+      </div>
+
+      <div class="strip" data-reveal>
+        <p>Designed for the Solana floor</p>
+        <ul data-stagger>
+          <li data-reveal><img src="assets/mark-white-512.png" alt="">{{CHAIN_LABEL}}</li>
+          <li data-reveal><img src="assets/mark-white-512.png" alt="">Live board feed</li>
+          <li data-reveal><img src="assets/mark-white-512.png" alt="">Dollar-denominated view</li>
+          <li class="more" data-reveal>+ more soon</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect market" id="market">
+    <div class="wrap">
+      <div class="market__head" data-reveal>
+        <div>
+          <p class="eyebrow">Live board</p>
+          <h2>What the floor is chasing right now</h2>
+          <p class="lede" style="margin-top:12px">The ten most-boosted Solana tokens, with price, daily move, volume and liquidity. Your own token takes the first row the moment its address is public.</p>
+        </div>
+        <span class="pill" data-status data-s="loading"><i class="dot"></i><span data-status-label>Syncing</span></span>
+      </div>
+
+      <div class="ticker" id="ticker" data-reveal aria-label="Live price ticker">
+        <div class="tick-skel skel" aria-hidden="true"></div>
+        <div class="ticker__track" id="ticker-track"></div>
+      </div>
+
+      <div class="board" id="board" data-state="loading" data-reveal>
+        <div class="board__head" aria-hidden="true"><span>#</span><span>Asset</span><span>Price</span><span>24h</span><span>Volume</span><span>Liquidity</span></div>
+        <p class="board__note" id="board-note" role="status" hidden></p>
+        <ol class="board__rows" id="rows" aria-label="Live token board">
+{{OWN_ROW}}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="gateway" id="gateway">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The gateway</p>
+      <h2 data-reveal style="margin-top:14px">A single dollar stash</h2>
+      <p class="lede" data-reveal data-delay="80">Picture your buying power as one figure with many doors. The glowing total below is the live 24-hour volume moving across the board.</p>
+      <div class="orbit" data-reveal>
+        <div class="orbit__ring" id="orbit" aria-hidden="true">
+          <span class="orbit__item" style="--a:0deg;--n:0" data-i="0"></span>
+          <span class="orbit__item" style="--a:60deg;--n:1" data-i="1"></span>
+          <span class="orbit__item" style="--a:120deg;--n:2" data-i="2"></span>
+          <span class="orbit__item" style="--a:180deg;--n:3" data-i="3"></span>
+          <span class="orbit__item" style="--a:240deg;--n:4" data-i="4"></span>
+          <span class="orbit__item" style="--a:300deg;--n:5" data-i="5"></span>
+        </div>
+        <div class="balance">
+          <span class="balance__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.5"/><circle cx="16.5" cy="14.5" r="1.2" fill="currentColor"/></svg></span>
+          <strong id="volume">0</strong>
+          <span class="balance__usd" aria-hidden="true">$</span>
+        </div>
+      </div>
+      <p class="gateway__cap">24h volume across the live board</p>
+    </div>
+  </section>
+
+  <section class="sect stack" id="stack">
+    <div class="wrap">
+      <div class="stack__grid">
+        <div data-reveal>
+          <p class="eyebrow">Under the hood</p>
+          <h2>Plumbing you never notice</h2>
+          <p class="lede">Spumetrade sits above public market data and leaves custody where it belongs. You see the token, not the machinery.</p>
+        </div>
+        <div class="cards2" data-stagger>
+          <div class="card" data-spotlight data-reveal>
+            <h3>Open data in</h3>
+            <p>Boost rankings, pair statistics and a token's own launch feed arrive from public endpoints and land on one board.</p>
+            <div class="diagram" aria-hidden="true">
+              <div class="diagram__hub"><img src="assets/mark-white-512.png" alt=""></div>
+              <div class="diagram__stem"></div>
+              <div class="diagram__bar"></div>
+              <div class="diagram__legs"><div class="diagram__leg"><span>Boosts</span></div><div class="diagram__leg"><span>Pairs</span></div><div class="diagram__leg"><span>Launch</span></div></div>
+            </div>
+          </div>
+          <div class="card" data-spotlight data-reveal>
+            <h3>Wallet-side keys</h3>
+            <p>Keys never need to leave your wallet. This page has no signing flow and asks for no secrets.</p>
+            <div class="split" aria-hidden="true">
+              <div class="split__box split__box--no"><small>Blocked</small><span>Our servers</span></div>
+              <div class="split__cut"></div>
+              <div class="split__box split__box--ok"><small>Secure</small><span>Your wallet</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dotfield" data-reveal>
+        <canvas id="dots" aria-hidden="true"></canvas>
+        <div class="dotfield__cap">
+          <div><p>Route preview</p><p>Signals travel the open feed and settle on your screen. Nothing here moves funds.</p></div>
+          <div class="dotfield__legend" aria-hidden="true"><span>Price</span><span class="is-up">Up</span><span class="is-down">Down</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect road" id="roadmap">
+    <div class="wrap">
+      <div class="road__head" data-reveal>
+        <div class="road__flags"><p class="eyebrow">Roadmap</p><span class="pill pill--quiet">Coming soon</span></div>
+        <h2>Four phases, one direction</h2>
+        <p class="lede">Each phase ships on its own. Nothing below is a promise ahead of release.</p>
+      </div>
+      <div class="grid4" data-reveal>
+        <div class="cell4" data-spotlight>
+          <p class="phase">PHASE 01</p>
+          <h3>The board</h3><p>A live market view of the Solana floor. Running on this page today.</p>
+          <div class="cell4__art"><div class="mini" aria-hidden="true">
+            <div class="mini__row"><span>Price</span><small>live</small></div>
+            <div class="mini__bar"><i style="--w:82%"></i></div><div class="mini__bar"><i style="--w:58%"></i></div><div class="mini__bar"><i style="--w:36%"></i></div>
+          </div></div>
+        </div>
+        <div class="cell4" data-spotlight>
+          <p class="phase">PHASE 02</p>
+          <h3>The stash</h3><p>One dollar-denominated figure for your buying power.</p>
+          <div class="cell4__art"><div class="mini" aria-hidden="true">
+            <div class="mini__row"><span>Stash</span><small>in dollars</small></div>
+            <div class="mini__row"><span>Ready to deploy</span><small>&middot; &middot; &middot;</small></div>
+            <div class="mini__bar"><i style="--w:64%"></i></div>
+          </div></div>
+        </div>
+        <div class="cell4" data-spotlight>
+          <p class="phase">PHASE 03</p>
+          <h3>The routes</h3><p>Paths that turn a dollar figure into a position.</p>
+          <div class="cell4__art" aria-hidden="true"><div class="nodes"><span>USD</span><i></i><span>SOL</span><i></i><span>TKN</span></div></div>
+        </div>
+        <div class="cell4" data-spotlight>
+          <p class="phase">PHASE 04</p>
+          <h3>The crowd</h3><p>Community tools and governance shaped by holders.</p>
+          <div class="cell4__art"><div class="mini" aria-hidden="true">
+            <div class="mini__row"><span class="l"><span class="tick-ico is-done"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Read the whitepaper</span></div>
+            <div class="mini__row"><span class="l"><span class="tick-ico"></span>Cast a first vote</span></div>
+            <div class="mini__row"><span class="l"><span class="tick-ico"></span>Invite a friend</span></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect token" id="token">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The token</p>
+      <h2 data-reveal>Supply, utility and fees are published before they are promoted</h2>
+      <p class="lede" data-reveal>Until the details are public, this page makes no claim about price, yield or returns. When they are, the whitepaper and the pinned address will agree.</p>
+      <div class="cabox" data-reveal>{{CA_SLOT_TOKEN}}</div>
+      <div class="steps" data-stagger>
+        <div class="step" data-spotlight data-reveal><small>01</small><h3>Address pinned</h3><p>The contract address appears in the bar at the top of this page before it appears anywhere else.</p></div>
+        <div class="step" data-spotlight data-reveal><small>02</small><h3>Terms published</h3><p>Supply, allocation and fee policy go into the whitepaper, line by line.</p></div>
+        <div class="step" data-spotlight data-reveal><small>03</small><h3>You verify</h3><p>Compare the pinned address with what your wallet displays before you sign anything.</p></div>
+      </div>
+      <div class="banner" data-reveal>
+        <div class="banner__l"><span class="banner__ico"><img src="assets/mark-white-512.png" alt=""></span><div><h3>One address, one source</h3><p>If the bar says not announced, nothing else is official.</p></div></div>
+        <a class="btn btn--ghost" href="#market">Back to the board</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect faq" id="faq">
+    <div class="wrap">
+      <div class="faq__grid">
+        <h2 data-reveal>FAQ</h2>
+        <div class="faq__list" data-reveal>
+          <div class="faq__item is-open"><button type="button" aria-expanded="true"><span>What is Spumetrade?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>A trading front door onto Solana. It pairs a live market board with a simple idea: your buying power sits in one dollar figure, and you decide where it goes.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>Why a dollar figure?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>Prices, volume and liquidity are all quoted in dollars. Thinking in a single unit removes the mental conversion when you compare opportunities.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>Where does the board data come from?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>From public DexScreener endpoints: the Solana tokens carrying the most boost weight, each resolved to its busiest pair. The feed refreshes itself every minute and rests while this tab is hidden.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>Does this site hold my funds?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>No. It only reads public market data. There is no wallet connection and no deposit address on this page.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>Which networks are covered?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>Solana mainnet today. Other networks sit on the roadmap, and nothing is promised before it ships.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>Where is the contract address?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>The bar pinned to the top of every screen is the single source of truth. If it reads not announced, there is no official address yet, and anything claiming otherwise did not come from us.</p></div></div></div>
+          <div class="faq__item"><button type="button" aria-expanded="false"><span>How do I avoid fakes?</span>{{CHEVRON}}</button><div class="faq__panel"><div><p>Copy the address only from the pinned bar, check its first and last characters against your wallet, and ignore private messages offering early access.</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta__in">
+      <div data-reveal><h2>Start with the board</h2><p>Watch the floor, learn its rhythm, and be ready when the stash goes live.</p></div>
+      <a class="btn btn--accent" href="#market" data-reveal>Open the board</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="brand" href="#top"><img src="assets/logo-tile-512.png" width="28" height="28" alt=""><span>Spumetrade</span></a>
+    <div class="foot__r">{{SOCIALS}}</div>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
